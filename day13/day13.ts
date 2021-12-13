@@ -64,7 +64,7 @@ const turn90deg = (matrix: number[][]): number[][] => {
   return matrix[0].map((x, i) => matrix.map((x) => x[i]));
 };
 
-const foldXUp = (matrix: number[][], index: number): number[][] => {
+const foldXLeft = (matrix: number[][], index: number): number[][] => {
   return turn90deg(turn90deg(turn90deg(foldYUp(turn90deg(matrix), index))));
 };
 
@@ -96,7 +96,7 @@ const foldPaper = (dots: number[][], inst: string[][]): number[][] => {
       folded =
         index <= folded.length / 2
           ? foldXRight(folded, index)
-          : foldXUp(folded, index);
+          : foldXLeft(folded, index);
     }
     console.log("Dots counted: " + countDots(folded));
   });
